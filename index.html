@@ -195,6 +195,13 @@
       margin: 0;
       padding-left: 18px;
     }
+    /* PRIMARY DATA HIGHLIGHT */
+    .card.primary-doctoral {
+      border: 1px dashed #5dbbe5 !important;
+      background: rgba(93, 187, 229, 0.05);
+    }
+    .card.primary-doctoral h3 { color: #5dbbe5; }
+
     .uml-layout {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -227,12 +234,6 @@
       transform: translateY(-2px);
       transform-box: fill-box;
       transform-origin: center;
-    }
-    /* Primary Data Visualization */
-    .node.primary rect {
-      stroke: #5dbbe5;
-      stroke-dasharray: 4;
-      stroke-width: 2;
     }
     .edge {
       stroke: rgba(160, 220, 195, 0.5);
@@ -434,15 +435,15 @@
     .gantt .on {
       color: #091912;
       font-weight: 700;
-      background: linear-gradient(90deg, rgba(106, 238, 190, 0.96), rgba(155, 244, 213, 0.96));
+      background: linear-gradient(90deg, #00ff88, #8fedcd);
     }
     .gantt .mid {
-      background: linear-gradient(90deg, rgba(93, 158, 229, 0.86), rgba(111, 221, 255, 0.72));
+      background: linear-gradient(90deg, #5dbbe5, #7fd7ff);
       color: #051722;
       font-weight: 700;
     }
-    /* Gantt Primary Data Highlight */
-    .gantt tr.primary td {
+    /* GANTT PRIMARY HIGHLIGHT */
+    .gantt tr.primary-wp td {
       border: 1px solid #5dbbe5;
     }
 
@@ -613,6 +614,25 @@
       </div>
     </section>
 
+    <section class="section panel primary-doctoral" id="primary-data">
+        <h2>Primary Doctoral Data Generation</h2>
+        <p class="section-lead">The thesis generates georeferenced empirical evidence to ground-truth assumptions and calibrate rule stability.</p>
+        <div class="grid-3">
+          <article class="card primary-doctoral">
+            <h3>Reach-Audit Variables</h3>
+            <p>Georeferenced field observations of bank condition, livestock access, and visible connectivity used for misclassification diagnosis.</p>
+          </article>
+          <article class="card primary-doctoral">
+            <h3>Maintainability Proxies</h3>
+            <p>Empirical data on implementation persistence: repair burden, recurrent pressure, and visibility for inspection.</p>
+          </article>
+          <article class="card primary-doctoral">
+            <h3>Uncertainty Calibration</h3>
+            <p>Repeat-audit data used to quantify observer and seasonal variance within the perturbation logic.</p>
+          </article>
+        </div>
+      </section>
+
     <section class="section panel" id="uml">
       <h2>UML-style dependency map</h2>
       <p class="section-lead">
@@ -626,7 +646,7 @@
             <span class="legend-chip" data-tip-title="Decision core" data-tip="The explicit rule layer and ranking engine that transform evidence into recommendations.">Decision core</span>
             <span class="legend-chip" data-tip-title="Uncertainty layer" data-tip="The ensemble logic that perturbs evidence, parameters, structure, and scale to test stability.">Uncertainty layer</span>
             <span class="legend-chip" data-tip-title="Implementation interface" data-tip="Sequencing, verification design, and reproducibility packaging that make outputs usable beyond research text.">Implementation interface</span>
-            <span class="legend-chip" style="color: #5dbbe5; border: 1px dashed #5dbbe5;" data-tip-title="Primary Doctoral Data" data-tip="New empirical data generated specifically for the doctoral project.">Primary Doctoral Data</span>
+            <span class="legend-chip" style="color:#5dbbe5; border:1px dashed #5dbbe5" data-tip-title="Primary Data" data-tip="New empirical data generated specifically for the doctoral project.">Primary Doctoral Data</span>
           </div>
         </div>
         <aside class="detail-panel panel" id="detail-panel">
@@ -939,111 +959,19 @@ else:
 
   <script>
     const nodes = [
-      {
-        id: 'governance', x: 30, y: 34, w: 190, h: 78, label: 'Governance context', sub: 'WFD • RBMP • Trust',
-        detail: {
-          title: 'Governance context',
-          desc: 'The system begins in governance rather than in detached technical scoring. The proposal is anchored in Irish WFD and RBMP conditions, Trust translation, protected-area constraints, and real catchment governance.' ,
-          bullets: ['Frames what the system is allowed to optimise', 'Carries protected-area and do-no-harm logic', 'Provides translation to technical and community audiences']
-        }
-      },
-      {
-        id: 'evidence', x: 260, y: 34, w: 190, h: 78, label: 'Evidence stack', sub: 'Official + spatial + derived',
-        detail: {
-          title: 'Evidence stack',
-          desc: 'Official assessment inputs, environmental spatial layers, actionability layers, and derived analytical layers feed the model. This keeps the architecture inspectable and re-runnable.' ,
-          bullets: ['Pressure and status layers', 'Environmental opportunity and constraint layers', 'Derived masks, indices, and pathway indicators']
-        }
-      },
-      {
-        id: 'rules', x: 490, y: 34, w: 190, h: 78, label: 'Rule sheet', sub: 'Eligibility • exclusion • do-no-harm',
-        detail: {
-          title: 'Rule sheet',
-          desc: 'Rules are externalised rather than buried in code. That matters for challenge, revision, and transfer.' ,
-          bullets: ['Formalises measure families and exclusions', 'Captures thresholds and assumptions', 'Supports versioning and traceability']
-        }
-      },
-      {
-        id: 'units', x: 720, y: 34, w: 220, h: 78, label: 'Decision units', sub: 'Reach • parcel-adjacent • subcatchment',
-        detail: {
-          title: 'Decision units',
-          desc: 'The method explicitly tests how outputs behave when the spatial management unit changes.' ,
-          bullets: ['Local parcel-adjacent logic matters', 'Reach logic matters', 'Subcatchment aggregation is tested, not assumed']
-        }
-      },
-      {
-        id: 'engine', x: 100, y: 186, w: 210, h: 86, label: 'Lexicographic engine', sub: 'Nutrients first',
-        detail: {
-          title: 'Lexicographic engine',
-          desc: 'The ranking architecture is hierarchical. Nutrient reduction leads. Biodiversity connectivity, flood attenuation, and sediment reduction refine priorities.' ,
-          bullets: ['Avoids flattening goals into one opaque score', 'Produces low-priority and strategic-priority surfaces', 'Retains an interpretable rationale for ranking']
-        }
-      },
-      {
-        id: 'portfolio', x: 380, y: 186, w: 210, h: 86, label: 'Portfolio generator', sub: 'Measure families interact',
-        detail: {
-          title: 'Portfolio generator',
-          desc: 'The model outputs coherent measure packages rather than pretending one isolated intervention is always enough.' ,
-          bullets: ['Riparian, interception, wetland, floodplain, peat logic', 'Captures interdependencies among measures', 'Supports strategic implementation rather than decorative mapping']
-        }
-      },
-      {
-        id: 'field', x: 660, y: 186, w: 230, h: 86, label: 'Bounded reach audit', sub: 'Validation • misclassification • maintainability',
-        isPrimary: true,
-        detail: {
-          title: 'Bounded reach audit',
-          desc: 'Primary data are bounded and protocol-driven. They exist to test the decision architecture, not to turn the thesis into a broad monitoring campaign.' ,
-          bullets: ['Rule validation and misclassification diagnosis', 'Repeat-audit uncertainty estimates', 'Maintainability and persistence proxies']
-        }
-      },
-      {
-        id: 'perturb', x: 90, y: 348, w: 230, h: 86, label: 'Perturbation protocol', sub: 'Data • parameter • structural • scale',
-        detail: {
-          title: 'Perturbation protocol',
-          desc: 'The uncertainty ensemble is pre-specified. It tests whether ranking claims survive plausible changes in evidence, thresholds, rule form, and scale.' ,
-          bullets: ['Missingness, classification error, vintages, resolution', 'Thresholds, breakpoints, corridor widths, shortlist size', 'Alternative rule forms and aggregation scales']
-        }
-      },
-      {
-        id: 'stability', x: 380, y: 348, w: 210, h: 86, label: 'Stability diagnostics', sub: 'Robust • conditional • fragile',
-        detail: {
-          title: 'Stability diagnostics',
-          desc: 'The model computes how often a candidate remains in the top shortlist and uses that to classify decision robustness.' ,
-          bullets: ['Robust if it remains shortlisted in at least 80% of runs', 'Conditional between 40% and 79%', 'Fragile below 40%']
-        }
-      },
-      {
-        id: 'sequence', x: 660, y: 348, w: 230, h: 86, label: 'Sequencing logic', sub: 'Rank + maintainability + confidence',
-        detail: {
-          title: 'Sequencing logic',
-          desc: 'Early action depends on more than raw rank. Portfolio coherence, stability, evidence quality, practical implementation, and maintainability all matter.' ,
-          bullets: ['Apparent fit is not enough', 'Durable fit governs practical phasing', 'Poor persistence can downgrade early action']
-        }
-      },
-      {
-        id: 'verify', x: 120, y: 520, w: 220, h: 86, label: 'Verification interface', sub: 'Minimum-viable follow-up',
-        detail: {
-          title: 'Verification interface',
-          desc: 'Each portfolio family gets a minimal follow-up design, with indicators, directional progress, review triggers, and community-facing options.' ,
-          bullets: ['Not a full monitoring programme', 'Can distinguish Q-value from CSSI and SSIS', 'Supports adaptive review after prioritisation']
-        }
-      },
-      {
-        id: 'repro', x: 390, y: 520, w: 220, h: 86, label: 'Reproducibility package', sub: 'Rule log • decision log • rebuild',
-        detail: {
-          title: 'Reproducibility package',
-          desc: 'The system is designed to be rerun, challenged, and transferred. The package includes manifests, logs, instructions, and atlas-style outputs.' ,
-          bullets: ['Data manifest and assumptions register', 'Parameter log and decision log', 'Rebuild instructions for reuse elsewhere']
-        }
-      },
-      {
-        id: 'outputs', x: 660, y: 520, w: 220, h: 86, label: 'Outputs', sub: 'Atlas • maps • papers • templates',
-        detail: {
-          title: 'Outputs',
-          desc: 'The doctoral and practical outputs are both explicit: papers, maps, site cards, verification templates, and a transferable decision architecture.' ,
-          bullets: ['Priority atlas and stability maps', 'Scientific papers and thesis chapters', 'Portfolio-specific verification templates']
-        }
-      }
+      { id: 'governance', x: 30, y: 34, w: 190, h: 78, label: 'Governance context', sub: 'WFD • RBMP • Trust', detail: { title: 'Governance context', desc: 'The system begins in governance rather than in detached technical scoring. The proposal is anchored in Irish WFD and RBMP conditions, Trust translation, protected-area constraints, and real catchment governance.', bullets: ['Frames what the system is allowed to optimise', 'Carries protected-area and do-no-harm logic', 'Provides translation to technical and community audiences'] }},
+      { id: 'evidence', x: 260, y: 34, w: 190, h: 78, label: 'Evidence stack', sub: 'Official + spatial + derived', detail: { title: 'Evidence stack', desc: 'Official assessment inputs, environmental spatial layers, actionability layers, and derived analytical layers feed the model. This keeps the architecture inspectable and re-runnable.', bullets: ['Pressure and status layers', 'Environmental opportunity and constraint layers', 'Derived masks, indices, and pathway indicators'] }},
+      { id: 'rules', x: 490, y: 34, w: 190, h: 78, label: 'Rule sheet', sub: 'Eligibility • exclusion • do-no-harm', detail: { title: 'Rule sheet', desc: 'Rules are externalised rather than buried in code. That matters for challenge, revision, and transfer.', bullets: ['Formalises measure families and exclusions', 'Captures thresholds and assumptions', 'Supports versioning and traceability'] }},
+      { id: 'units', x: 720, y: 34, w: 220, h: 78, label: 'Decision units', sub: 'Reach • parcel-adjacent • subcatchment', detail: { title: 'Decision units', desc: 'The method explicitly tests how outputs behave when the spatial management unit changes.', bullets: ['Local parcel-adjacent logic matters', 'Reach logic matters', 'Subcatchment aggregation is tested, not assumed'] }},
+      { id: 'engine', x: 100, y: 186, w: 210, h: 86, label: 'Lexicographic engine', sub: 'Nutrients first', detail: { title: 'Lexicographic engine', desc: 'The ranking architecture is hierarchical. Nutrient reduction leads. Biodiversity connectivity, flood attenuation, and sediment reduction refine priorities.', bullets: ['Avoids flattening goals into one opaque score', 'Produces low-priority and strategic-priority surfaces', 'Retains an interpretable rationale for ranking'] }},
+      { id: 'portfolio', x: 380, y: 186, w: 210, h: 86, label: 'Portfolio generator', sub: 'Measure families interact', detail: { title: 'Portfolio generator', desc: 'The model outputs coherent measure packages rather than pretending one isolated intervention is always enough.', bullets: ['Riparian, interception, wetland, floodplain, peat logic', 'Captures interdependencies among measures', 'Supports strategic implementation rather than decorative mapping'] }},
+      { id: 'field', x: 660, y: 186, w: 230, h: 86, label: 'Bounded reach audit', sub: 'Validation • misclassification • maintainability', isPrimary: true, detail: { title: 'Bounded reach audit', desc: 'Primary doctoral data. These are bounded and protocol-driven. They exist to test the decision architecture, not to turn the thesis into a broad monitoring campaign.', bullets: ['Rule validation and misclassification diagnosis', 'Repeat-audit uncertainty estimates', 'Maintainability and persistence proxies'] }},
+      { id: 'perturb', x: 90, y: 348, w: 230, h: 86, label: 'Perturbation protocol', sub: 'Data • parameter • structural • scale', detail: { title: 'Perturbation protocol', desc: 'The uncertainty ensemble is pre-specified. It tests whether ranking claims survive plausible changes in evidence, thresholds, rule form, and scale.', bullets: ['Missingness, classification error, vintages, resolution', 'Thresholds, breakpoints, corridor widths, shortlist size', 'Alternative rule forms and aggregation scales'] }},
+      { id: 'stability', x: 380, y: 348, w: 210, h: 86, label: 'Stability diagnostics', sub: 'Robust • conditional • fragile', detail: { title: 'Stability diagnostics', desc: 'The model computes how often a candidate remains in the top shortlist and uses that to classify decision robustness.', bullets: ['Robust if it remains shortlisted in at least 80% of runs', 'Conditional between 40% and 79%', 'Fragile below 40%'] }},
+      { id: 'sequence', x: 660, y: 348, w: 230, h: 86, label: 'Sequencing logic', sub: 'Rank + maintainability + confidence', detail: { title: 'Sequencing logic', desc: 'Early action depends on more than raw rank. Portfolio coherence, stability, evidence quality, practical implementation, and maintainability all matter.', bullets: ['Apparent fit is not enough', 'Durable fit governs practical phasing', 'Poor persistence can downgrade early action'] }},
+      { id: 'verify', x: 120, y: 520, w: 220, h: 86, label: 'Verification interface', sub: 'Minimum-viable follow-up', detail: { title: 'Verification interface', desc: 'Each portfolio family gets a minimal follow-up design, with indicators, directional progress, review triggers, and community-facing options.', bullets: ['Not a full monitoring programme', 'Can distinguish Q-value from CSSI and SSIS', 'Supports adaptive review after prioritisation'] }},
+      { id: 'repro', x: 390, y: 520, w: 220, h: 86, label: 'Reproducibility package', sub: 'Rule log • decision log • rebuild', detail: { title: 'Reproducibility package', desc: 'The system is designed to be rerun, challenged, and transferred. The package includes manifests, logs, instructions, and atlas-style outputs.', bullets: ['Data manifest and assumptions register', 'Parameter log and decision log', 'Rebuild instructions for reuse elsewhere'] }},
+      { id: 'outputs', x: 660, y: 520, w: 220, h: 86, label: 'Outputs', sub: 'Atlas • maps • papers • templates', detail: { title: 'Outputs', desc: 'The doctoral and practical outputs are both explicit: papers, maps, site cards, verification templates, and a transferable decision architecture.', bullets: ['Priority atlas and stability maps', 'Scientific papers and thesis chapters', 'Portfolio-specific verification templates'] }}
     ];
 
     const edges = [
@@ -1103,10 +1031,10 @@ else:
         rect.setAttribute('width', node.w);
         rect.setAttribute('height', node.h);
         
-        // Highlight primary data nodes
         if (node.isPrimary) {
           rect.setAttribute('stroke', '#5dbbe5');
           rect.setAttribute('stroke-dasharray', '4');
+          rect.setAttribute('stroke-width', '2');
         }
 
         const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -1221,13 +1149,13 @@ else:
       const meanPhase = meanPhaseScore / runs;
 
       let stabilityClass = 'Fragile';
-      let stabilityColor = '#ff5f5f'; // Pleasant Red
+      let statusColor = '#ff5f5f'; // Pleasant Red
       if (persistPct >= 80) {
         stabilityClass = 'Robust';
-        stabilityColor = '#00ff88'; // Brighter Green
+        statusColor = '#00ff88'; // Brighter Green
       } else if (persistPct >= 40) {
         stabilityClass = 'Conditional';
-        stabilityColor = '#ff9f00'; // Orange
+        statusColor = '#ff9f00'; // Orange
       }
 
       let phaseText = 'Deferred';
@@ -1243,40 +1171,40 @@ else:
 
       const persistValEl = document.getElementById('persistValue');
       persistValEl.textContent = `${persistPct}%`;
-      persistValEl.style.color = stabilityColor;
+      persistValEl.style.color = statusColor;
 
       document.getElementById('phaseValue').textContent = phaseText;
       
       const stabValEl = document.getElementById('stabilityValue');
       stabValEl.textContent = stabilityClass;
-      stabValEl.style.color = stabilityColor;
+      stabValEl.style.color = statusColor;
 
       document.getElementById('simNarrative').textContent = narrative + ` Phase-readiness in this sandbox is ${phasePct}%.`;
       
-      const statusSpan = document.getElementById('statusBar').querySelector('span');
-      statusSpan.style.width = `${persistPct}%`;
-      statusSpan.style.background = stabilityColor;
+      const span = document.getElementById('statusBar');
+      span.style.width = `${persistPct}%`;
+      span.style.background = statusColor;
     }
-
-    runSimulation();
 
     const ganttData = [
       { label: 'WP1 Evidence architecture & rule formalisation', start: 1, end: 9, cls: 'on' },
       { label: 'WP2 Core GIS build under lexicographic objectives', start: 6, end: 18, cls: 'mid' },
-      { id: 'wp3', label: 'WP3 Portfolio logic & catchment scaling', start: 10, end: 24, cls: 'on' },
+      { label: 'WP3 Portfolio logic & catchment scaling', start: 10, end: 24, cls: 'on' },
       { label: 'WP4 Uncertainty & ranking-stability experiments', start: 12, end: 30, cls: 'mid' },
-      { id: 'wp5', label: 'WP5 Primary-data validation & verification design', start: 18, end: 32, cls: 'on', isPrimary: true },
+      { label: 'WP5 Primary-data validation & verification design', start: 18, end: 32, cls: 'on', isPrimary: true },
       { label: 'WP6 Reproducibility, publications & thesis integration', start: 30, end: 48, cls: 'mid' }
     ];
 
     function buildGantt() {
       const table = document.getElementById('ganttTable');
+      if (!table) return;
+      
       const thead = document.createElement('thead');
       const headRow1 = document.createElement('tr');
       const corner = document.createElement('th');
       corner.textContent = 'Work package';
       headRow1.appendChild(corner);
-      ['Year 1','Year 2','Year 3','Year 4'].forEach((year, idx) => {
+      ['Year 1','Year 2','Year 3','Year 4'].forEach((year) => {
         const th = document.createElement('th');
         th.colSpan = 12;
         th.textContent = year;
@@ -1298,20 +1226,16 @@ else:
       ganttData.forEach(row => {
         const tr = document.createElement('tr');
         if (row.isPrimary) {
-           tr.classList.add('primary');
-           tr.style.outline = '1px dashed #5dbbe5';
-           tr.style.outlineOffset = '-2px';
+           tr.classList.add('primary-wp');
         }
         const label = document.createElement('td');
-        label.innerHTML = row.label + (row.isPrimary ? ' <span style="color:#5dbbe5; font-size:10px; display:block;">NEW PRIMARY DOCTORAL DATA</span>' : '');
+        label.innerHTML = row.label + (row.isPrimary ? ' <br><small style="color:#5dbbe5; font-weight:700">PRIMARY DATA GENERATION</small>' : '');
         tr.appendChild(label);
         for (let m = 1; m <= 48; m++) {
           const td = document.createElement('td');
           if (m >= row.start && m <= row.end) {
             td.className = row.cls;
             td.textContent = '●';
-          } else {
-            td.textContent = '';
           }
           tr.appendChild(td);
         }
@@ -1322,6 +1246,8 @@ else:
       table.appendChild(tbody);
     }
 
+    // Initialize all functions
+    runSimulation();
     buildGantt();
   </script>
 </body>
