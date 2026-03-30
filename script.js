@@ -355,22 +355,54 @@ function setupTabs() {
 }
 
 function setupTooltips() {
-  document.querySelectorAll('[data-tip], [data-tip-title]').forEach(element => {
-    element.addEventListener('mouseenter', () => {
-      const title = element.getAttribute('data-tip-title') || 'Detail';
-      const text = element.getAttribute('data-tip') || '';
-      tooltip.innerHTML = `<strong>${title}</strong><span>${text}</span>`;
-      tooltip.style.opacity = '1';
-    });
+  const isMobile = () => window.matchMedia('(max-width: 760px)').matches;
 
-    element.addEventListener('mouseleave', () => {
-      tooltip.style.opacity = '0';
-    });
+  const showTooltip = (element, event = null) => {
+    const title = element.getAttribute('data-tip-title') || 'Detail';
+    const text = element.getAttribute('data-tip') || '';
 
-    element.addEventListener('mousemove', event => {
+    tooltip.innerHTML = `<strong>${title}</strong><span>${text}</span>`;
+    tooltip.style.opacity = '1';
+
+    if (isMobile()) {
+      tooltip.style.left = '12px';
+      tooltip.style.right = '12px';
+      tooltip.style.top = 'auto';
+      tooltip.style.bottom = '12px';
+    } else if (event) {
       tooltip.style.left = `${event.clientX + 16}px`;
       tooltip.style.top = `${event.clientY + 16}px`;
+      tooltip.style.right = 'auto';
+      tooltip.style.bottom = 'auto';
+    }
+  };
+
+  const hideTooltip = () => {
+    tooltip.style.opacity = '0';
+  };
+
+  document.querySelectorAll('[data-tip], [data-tip-title]').forEach((element) => {
+    element.addEventListener('mouseenter', (event) => showTooltip(element, event));
+    element.addEventListener('mousemove', (event) => {
+      if (!isMobile()) {
+        showTooltip(element, event);
+      }
     });
+    element.addEventListener('mouseleave', hideTooltip);
+
+    element.addEventListener('focus', () => showTooltip(element));
+    element.addEventListener('blur', hideTooltip);
+
+    element.addEventListener('click', (event) => {
+      event.stopPropagation();
+      showTooltip(element, event);
+    });
+  });
+
+  document.addEventListener('click', hideTooltip);
+
+  window.addEventListener('resize', () => {
+    hideTooltip();
   });
 }
 
