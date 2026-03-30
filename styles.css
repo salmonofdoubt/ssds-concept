@@ -675,3 +675,130 @@ table.gantt {
   h1 { font-size: 2.3rem; }
   .meta-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Mobile hardening patch ===== */
+.mobile-timeline-summary {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --page-padding-x: 8px;
+    --page-padding-top: 12px;
+    --sticky-offset: 8px;
+  }
+
+  .page {
+    width: min(100vw, calc(100vw - 16px));
+  }
+
+  .hero,
+  .section,
+  .footer {
+    padding: 18px;
+  }
+
+  .hero {
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    line-height: 1.12;
+  }
+
+  .subhead {
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .badge-row {
+    gap: 8px;
+  }
+
+  .badge {
+    font-size: 0.84rem;
+    padding: 8px 10px;
+  }
+
+  .sticky-nav {
+    position: static;
+    top: auto;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .sticky-nav a {
+    font-size: 0.85rem;
+    padding: 7px 10px;
+  }
+
+  .hero-grid,
+  .uml-layout,
+  .algorithm-grid,
+  .sim-layout,
+  .grid-3,
+  .grid-2,
+  .parallel-strip,
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-panel {
+    position: static;
+    min-height: auto;
+  }
+
+  /* Make the SDSS map horizontally scrollable instead of tiny */
+  .diagram-shell {
+    min-height: auto;
+    padding: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #uml-svg {
+    width: 980px;
+    max-width: none;
+    display: block;
+  }
+
+  /* Timeline: hide big gantt, show mobile summary instead */
+  .gantt {
+    display: none;
+  }
+
+  .mobile-timeline-summary {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  /* Tooltip becomes bottom sheet on phones */
+  .tooltip-panel {
+    left: 12px !important;
+    right: 12px;
+    top: auto !important;
+    bottom: 12px;
+    max-width: none;
+    width: auto;
+    padding: 14px 16px;
+  }
+
+  /* Slightly lighter rendering for mobile */
+  .panel,
+  .card,
+  .stat,
+  .mini-panel,
+  .detail-panel,
+  .timeline-wrap,
+  .tooltip-panel {
+    backdrop-filter: none;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  }
+}
