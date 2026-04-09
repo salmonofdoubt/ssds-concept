@@ -1,5 +1,8 @@
 # Stability-Aware SDSS Concept Demo v1.0.4
-https://doi.org/10.5281/zenodo.19487210
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19487210.svg)](https://doi.org/10.5281/zenodo.19487210)
+
+**Archived release DOI:** 10.5281/zenodo.19487210
 
 ## Overview
 
