@@ -1,32 +1,22 @@
 cff-version: 1.2.0
-message: "If you use or discuss this work, please cite it as below."
+message: "If you use this software, please cite it using these metadata."
 title: "Stability-Aware SDSS Concept Demo"
-abstract: "Public concept demonstrator for a stability-aware spatial decision support system for prioritising nature-based solutions under uncertainty."
 type: software
 authors:
   - family-names: Baumann
-    given-names: André
+    given-names: "André"
     orcid: "https://orcid.org/0009-0005-8345-5530"
-version: 1.0.0
-date-released: 2026-04-09
+abstract: "Public concept demonstrator for a stability-aware spatial decision support system for prioritising nature-based solutions under uncertainty."
+version: "v1.0.4"
+date-released: "2026-04-09"
 url: "https://salmonofdoubt.github.io/sdss-concept/"
+repository-code: "https://github.com/salmonofdoubt/sdss-concept"
 keywords:
-  - nature-based solutions
-  - spatial decision support system
-  - SDSS
-  - uncertainty analysis
-  - ranking stability
-  - GIS
-  - water quality
-  - catchment management
-license: "All rights reserved"
-preferred-citation:
-  type: software
-  authors:
-    - family-names: Baumann
-      given-names: André
-      orcid: "https://orcid.org/0009-0005-8345-5530"
-  title: "Stability-Aware SDSS Concept Demo"
-  version: 1.0.0
-  date-released: 2026-04-09
-  url: "https://salmonofdoubt.github.io/sdss-concept/"
+  - "nature-based solutions"
+  - "spatial decision support system"
+  - "SDSS"
+  - "uncertainty analysis"
+  - "ranking stability"
+  - "GIS"
+  - "water quality"
+  - "catchment management"
