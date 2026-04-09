@@ -1,4 +1,4 @@
-# Stability-Aware SDSS Concept Demo
+# Stability-Aware SDSS Concept Demo v1.0.2
 
 ## Overview
 
@@ -69,7 +69,7 @@ If you want better discoverability on GitHub, these repository topics would fit:
 
 ## Recommended next steps
 
-1. Create a GitHub release such as `v1.0.0`.
+1. Create a GitHub release such as `v1.0.2`.
 2. Archive that release through Zenodo.
 3. Add the version DOI back into `CITATION.cff`.
 4. Keep future technical implementation details in a separate private repository until you decide what to disclose.
